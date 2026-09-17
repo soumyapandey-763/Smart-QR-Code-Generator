@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart QR Code Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Smart QR Code Generator</h1>
+
+        <p>Create your QR code instantly</p>
+
+
+        <!-- QR Type -->
+        <label for="qrType">QR Type</label>
+
+        <select id="qrType">
+
+            <option value="text">Text / URL</option>
+
+            <option value="email">Email</option>
+
+            <option value="wifi">Wi-Fi</option>
+
+            <option value="contact">Contact / vCard</option>
+
+        </select>
+
+
+        <!-- Text / URL -->
+        <div id="textFields">
+
+            <label for="qrText">Enter Text or URL</label>
+
+            <input
+                type="text"
+                id="qrText"
+                placeholder="Enter text or URL"
+            >
+
+        </div>
+
+
+        <!-- Email -->
+        <div id="emailFields" style="display: none;">
+
+            <label for="emailAddress">Email Address</label>
+
+            <input
+                type="email"
+                id="emailAddress"
+                placeholder="example@gmail.com"
+            >
+
+            <label for="emailSubject">Subject</label>
+
+            <input
+                type="text"
+                id="emailSubject"
+                placeholder="Enter subject"
+            >
+
+            <label for="emailMessage">Message</label>
+
+            <input
+                type="text"
+                id="emailMessage"
+                placeholder="Enter message"
+            >
+
+        </div>
+
+
+        <!-- Wi-Fi -->
+        <div id="wifiFields" style="display: none;">
+
+            <label for="wifiName">Wi-Fi Name (SSID)</label>
+
+            <input
+                type="text"
+                id="wifiName"
+                placeholder="Enter Wi-Fi name"
+            >
+
+            <label for="wifiPassword">Wi-Fi Password</label>
+
+            <input
+                type="password"
+                id="wifiPassword"
+                placeholder="Enter Wi-Fi password"
+            >
+
+            <label for="wifiSecurity">Security</label>
+
+            <select id="wifiSecurity">
+
+                <option value="WPA">WPA/WPA2</option>
+
+                <option value="WEP">WEP</option>
+
+                <option value="nopass">No Password</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Contact / vCard -->
+        <div id="contactFields" style="display: none;">
+
+            <label for="contactName">Name</label>
+
+            <input
+                type="text"
+                id="contactName"
+                placeholder="Enter name"
+            >
+
+            <label for="contactPhone">Phone Number</label>
+
+            <input
+                type="tel"
+                id="contactPhone"
+                placeholder="Enter phone number"
+            >
+
+            <label for="contactEmail">Email</label>
+
+            <input
+                type="email"
+                id="contactEmail"
+                placeholder="Enter email"
+            >
+
+        </div>
+
+
+        <!-- QR Options -->
+        <div class="options">
+
+            <div>
+
+                <label for="qrColor">QR Color</label>
+
+                <input
+                    type="color"
+                    id="qrColor"
+                    value="#000000"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="qrSize">QR Size</label>
+
+                <select id="qrSize">
+
+                    <option value="150">Small</option>
+
+                    <option value="200" selected>Medium</option>
+
+                    <option value="250">Large</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- Generate Button -->
+        <button onclick="generateQR()">
+            Generate QR Code
+        </button>
+
+
+        <!-- QR Code -->
+        <div id="qrcode"></div>
+
+
+        <!-- Action Buttons -->
+        <div class="buttons">
+
+            <button
+                id="downloadBtn"
+                onclick="downloadQR()"
+                style="display: none;">
+                Download QR
+            </button>
+
+            <button
+                id="copyBtn"
+                onclick="copyQR()"
+                style="display: none;">
+                Copy QR
+            </button>
+
+            <button
+                id="clearBtn"
+                onclick="clearQR()"
+                style="display: none;">
+                Clear
+            </button>
+
+        </div>
+
+
+        <!-- QR History -->
+        <div id="historySection">
+
+            <h2>QR History</h2>
+
+            <div id="historyList"></div>
+
+            <button
+                onclick="clearHistory()"
+                id="clearHistoryBtn">
+                Clear History
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
